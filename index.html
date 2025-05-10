@@ -86,10 +86,11 @@
 
       if (isLogin) {
         const savedPass = localStorage.getItem(`user_${username}`);
-        if (savedPass === password) {
-          alert('Login successful!');
-          window.location.href = 'game.html'; // Placeholder for your actual game
-        } else {
+if (savedPass === password) {
+  localStorage.setItem("currentUser", username); // ✅ Save the current user
+  alert('Login successful!');
+  window.location.href = 'game.html';
+} else {
           alert('Invalid username or password.');
         }
       } else {
