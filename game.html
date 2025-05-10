@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Life Sim - Game</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -53,54 +54,6 @@
     <!-- Content is dynamically injected -->
   </div>
 
-  <script>
-    const gameContainer = document.getElementById('gameContainer');
-    const currentUser = localStorage.getItem('currentUser');
-
-    // Simulate logged-in user (in real setup, this would be set on login)
-    if (!currentUser) {
-      alert('You must be logged in to play.');
-      window.location.href = 'index.html';
-    }
-
-    const genderKey = `${currentUser}_gender`;
-    const savedGender = localStorage.getItem(genderKey);
-
-    if (!savedGender) {
-      showGenderSelection();
-    } else {
-      startGame(savedGender);
-    }
-
-    function showGenderSelection() {
-      gameContainer.innerHTML = `
-        <h2>Choose Your Avatar's Gender</h2>
-        <button class="male" onclick="selectGender('male')">Male</button>
-        <button class="female" onclick="selectGender('female')">Female</button>
-      `;
-    }
-
-    function selectGender(gender) {
-      localStorage.setItem(genderKey, gender);
-      startGame(gender);
-    }
-
-    function startGame(gender) {
-      gameContainer.innerHTML = `
-        <h2>Welcome to Life Sim!</h2>
-        <p>You are playing as a <strong>${gender}</strong> character.</p>
-        <button class="continue" onclick="beginLife()">Continue</button>
-      `;
-    }
-
-    function beginLife() {
-      alert('Your life begins now! (Next: childhood phase)');
-      // Replace with actual game flow
-      gameContainer.innerHTML = `
-        <h2>You're born!</h2>
-        <p>More phases coming soon...</p>
-      `;
-    }
-  </script>
+  <script src="game.js"></script>
 </body>
 </html>
